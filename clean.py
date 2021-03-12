@@ -16,16 +16,6 @@ from colorama import Style as S
 
 bot = commands.Bot(command_prefix = "?")
 
-@bot.event
-async def on_ready():
-  print(f"""
-{S.BRIGHT}{C.LIGHTGREEN_EX}Easynuke is ready.{S.NORMAL}
-This script is connected to {C.WHITE}{bot.user}.
-{C.GREEN}Run {C.WHITE}{prefix}kill {C.GREEN}in any server to nuke it.
-{C.GREEN}Run {C.WHITE}{prefix}cmds {C.GREEN}in any server with your bot to get a list of commands.
-{C.WHITE}Your bot's oauth2 link is {C.LIGHTBLUE_EX}https://discord.com/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot
-""")
-
 @bot.command()
 async def aigis(ctx):
   await ctx.message.delete()
