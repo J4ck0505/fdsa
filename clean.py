@@ -1,5 +1,5 @@
 #BOT CONFIG
-token = "process.env.TOKEN"
+token = "TOKEN"
 prefix = "?"
 
 #NUKE CONFIG
