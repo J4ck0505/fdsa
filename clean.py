@@ -1,5 +1,4 @@
 #BOT CONFIG
-token = "TOKEN"
 prefix = "?"
 
 #NUKE CONFIG
@@ -183,7 +182,7 @@ if __name__ == "__main__":
                        {C.WHITE}https://github.com/Tim232/TerrorBot
   """)
   try:
-    bot.run(token)
+    bot.run(os.environ['token'])
   except discord.LoginFailure:
     print(f"{C.RED}Client failed to log in. {C.WHITE}[Improper Token Passed]")
   except discord.HTTPException:
