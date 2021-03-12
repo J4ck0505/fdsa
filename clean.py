@@ -165,22 +165,4 @@ async def logout(ctx):
   await ctx.message.delete()
   exit()
 
-if __name__ == "__main__":
-  print(f"""
-{S.RESET_ALL}||{C.LIGHTYELLOW_EX}{S.BRIGHT}   ▄████████    ▄████████    ▄████████ ▄██   ▄   ███▄▄▄▄   ███    █▄     ▄█   ▄█▄    ▄████████ {S.RESET_ALL}||
-{S.RESET_ALL}||{C.LIGHTYELLOW_EX}{S.BRIGHT}  ███    ███   ███    ███   ███    ███ ███   ██▄ ███▀▀▀██▄ ███    ███   ███ ▄███▀   ███    ███ {S.RESET_ALL}||
-{S.RESET_ALL}||{C.LIGHTYELLOW_EX}{S.BRIGHT}  ███    █▀    ███    ███   ███    █▀  ███▄▄▄███ ███   ███ ███    ███   ███▐██▀     ███    █▀  {S.RESET_ALL}||
-{S.RESET_ALL}||{C.LIGHTYELLOW_EX}{S.BRIGHT} ▄███▄▄▄       ███    ███   ███        ▀▀▀▀▀▀███ ███   ███ ███    ███  ▄█████▀     ▄███▄▄▄     {S.RESET_ALL}||
-{S.RESET_ALL}||{C.LIGHTYELLOW_EX}{S.BRIGHT}▀▀███▀▀▀     ▀███████████ ▀███████████ ▄██   ███ ███   ███ ███    ███ ▀▀█████▄    ▀▀███▀▀▀     {S.RESET_ALL}||
-{S.RESET_ALL}||{C.LIGHTYELLOW_EX}{S.BRIGHT}  ███    █▄    ███    ███          ███ ███   ███ ███   ███ ███    ███   ███▐██▄     ███    █▄  {S.RESET_ALL}||
-{S.RESET_ALL}||{C.LIGHTYELLOW_EX}{S.BRIGHT}  ███    ███   ███    ███    ▄█    ███ ███   ███ ███   ███ ███    ███   ███ ▀███▄   ███    ███ {S.RESET_ALL}||
-{S.RESET_ALL}||{C.LIGHTYELLOW_EX}{S.BRIGHT}  ██████████   ███    █▀   ▄████████▀   ▀█████▀   ▀█   █▀  ████████▀    ███   ▀█▀   ██████████ {S.RESET_ALL}||
-{S.RESET_ALL}                                       {C.BLACK}-Made by Tim232-
-                       {C.WHITE}https://github.com/Tim232/TerrorBot
-  """)
-  try:
-    bot.run(os.environ['token'])
-  except discord.LoginFailure:
-    print(f"{C.RED}Client failed to log in. {C.WHITE}[Improper Token Passed]")
-  except discord.HTTPException:
-    print(f"{C.RED}Client failed to log in. {C.WHITE}[Unknown Error]")
+bot.run(os.environ['token'])
