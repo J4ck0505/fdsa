@@ -1,6 +1,3 @@
-#BOT CONFIG
-prefix = "?"
-
 #NUKE CONFIG
 spam_messages = ["orgia mode"]
 channel_names = ["persona"]
@@ -17,7 +14,7 @@ from discord.ext.commands import *
 from colorama import Fore as C
 from colorama import Style as S
 
-bot = commands.Bot(command_prefix = prefix)
+bot = commands.Bot(command_prefix = "?")
 
 @bot.event
 async def on_ready():
