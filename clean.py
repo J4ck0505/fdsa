@@ -18,13 +18,12 @@ async def on_ready():
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id)
 
 @cilent.command()
-async def on_message(self, message):
-        # SENDER가 BOT일 경우 반응을 하지 않도록 한다.
+async def aigis:
         if message.author.bot:
             return None
         
         # message.content = message의 내용
-        if message.content == "aigis":
+    
             # 현재 채널을 받아옴
             channel = message.channel
             # 답변 내용 구성
