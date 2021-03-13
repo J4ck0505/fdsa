@@ -17,19 +17,38 @@ async def on_ready():
   
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id)
 
-@cilent.command()
-async def aigis:
-        if message.author.bot:
-            return None
-        
-        # message.content = message의 내용
-    
-            # 현재 채널을 받아옴
-            channel = message.channel
-            # 답변 내용 구성
-            msg = "aigis_ready"
-            # msg에 지정된 내용대로 메시지를 전송
-            await channel.send(msg)
-            return None
+@client.command()
+async def aigis(ctx):
+  await ctx.message.delete()
+  author = ctx.author
+  cmds = discord.Embed(
+    title = "Aigis - Commands", 
+    description = """
+**__COMMANDS__**
+```
+{prefix}aigis
+Shows this message. 
+ 
+{prefix}orgia
+Nukes the server. 
+ 
+{prefix}sall <message>
+Spams all the channels.
+ 
+{prefix}ccr <channel count> <channel name>
+Creates channels with the given name.
+ 
+{prefix}rank
+Deletes all channels.
+ 
+{prefix}overheat
+Logs out the client.
+```
+**__CREDITS__**
+```
+asdf
+```
+""")
+  await author.send(embed = cmds)
   
 client.run(os.environ['token'])
