@@ -59,17 +59,6 @@ asdf
 """)
   await author.send(embed = cmds)
 
-#여기서부터 다음 설명까지 orgia 커맨드 범위
-async def orgia(ctx):
-  await ctx.message.delete()
-  guild = ctx.guild
-  await nuke(guild)
-
-#서버퇴장
-async def overheat(ctx):
-  await ctx.message.delete()
-  exit()  
-  
   
   
 #끝
