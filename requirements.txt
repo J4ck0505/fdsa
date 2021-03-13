@@ -1,4 +1,3 @@
-discord
+discord.py
 aiohttp
 asyncio
-Webhook
