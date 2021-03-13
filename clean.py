@@ -16,7 +16,8 @@ async def on_ready():
   #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="영상 시청중"))
   
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id)
- 
+
+@cilent.command 
 async def on_message(self, message):
         # SENDER가 BOT일 경우 반응을 하지 않도록 한다.
         if message.author.bot:
