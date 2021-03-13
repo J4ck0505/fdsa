@@ -1,1 +1,1 @@
-worker: python clean.py
+worker : python clean.py
