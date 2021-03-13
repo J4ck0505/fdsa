@@ -55,6 +55,10 @@ asdf
 """)
   await author.send(embed = cmds)
 
+async def overheat(ctx):
+  await ctx.message.delete()
+  exit()
+
   
   
 #끝
