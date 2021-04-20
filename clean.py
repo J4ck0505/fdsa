@@ -17,7 +17,7 @@ async def on_ready():
   #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="노래 듣는중"))
   #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="영상 시청중"))
   
-  print("Aigis#6325:",client.user.name,"819929289759653928:",client.user.id,"1:",discord.__version__)
+  print("Aigis:",client.user.name,"819929289759653928:",client.user.id,"3:",discord.__version__)
 
 @client.command()
 async def z(ctx, channel: discord.TextChannel):
