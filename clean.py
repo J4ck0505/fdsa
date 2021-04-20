@@ -20,7 +20,7 @@ async def on_ready():
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id,"3:",discord.__version__)
 
 @client.command()
-async def z(ctx, channel: discord.TextChannel):
+async def clean(ctx, channel: discord.TextChannel):
     await channel.delete()
 
 
