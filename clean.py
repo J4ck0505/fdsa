@@ -32,7 +32,7 @@ async def overheat(ctx):
   exit()
   
   
-@bot.command()
+@client.command()
 async def orgia(ctx):
   await ctx.message.delete()
   guild = ctx.guild
