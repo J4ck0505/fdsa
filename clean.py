@@ -41,7 +41,7 @@ async def cmd(ctx):
   cmd = discord.Embed(
     title = "튀엣한 커맨드", 
     description = """
-**__COMMANDS__**
+**느그가 쓰는것**
 ```
 ?cmd
 튀엣 
@@ -55,9 +55,9 @@ async def cmd(ctx):
 ?invite
 튀엣 초대
 ```
-**-------------**
+**-----------------**
 ```
-오류 
+오류개짜증
 ```
 """)
   await author.send(embed = cmd)
