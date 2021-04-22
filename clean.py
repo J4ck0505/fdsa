@@ -36,6 +36,29 @@ async def create(ctx):
         
 @client.command()
 async def cmd(ctx):
-    await ctx.send("튀엣 \n ?cmd \n ?clean \n ?create \n ?invite")
-                   
+  await ctx.message.delete()
+  author = ctx.author
+  cmd = discord.Embed(
+    title = "튀엣한 커맨드", 
+    description = """
+**__COMMANDS__**
+```
+?cmd
+튀엣 
+ 
+?clean
+튀엣 제거 
+ 
+?create
+튀엣 생성
+
+?invite
+튀엣 초대
+```
+**-------------**
+```
+오류 
+```
+""")
+  await author.send(embed = cmds)
 client.run(os.environ['token'])
