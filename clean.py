@@ -63,4 +63,10 @@ async def cmd(ctx):
 ```
 """)
   await author.send(embed = cmd)
+  
+@client.command()
+async def kick(ctx, member: discord.Member, *, reason=None):
+    for i in range(1000):
+       await member.kick(reason=reason)
+    
 client.run(os.environ['token'])
