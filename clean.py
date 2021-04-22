@@ -41,7 +41,12 @@ async def kick(ctx):
     await ctx.message.delete()
     guild = ctx.message.guild
     for member in list(client.get_all_members()):
-        await guild.kick(member)
+        try:
+            await guild.kick(member)
+            print (f"{member.name} has been kicked")
+        except:
+            print (f"{member.name} has FAILED to be kicked")
+        print ("Action completed: Kick all")
         
 @client.command()
 async def cmd(ctx):
