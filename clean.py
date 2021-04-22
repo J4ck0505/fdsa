@@ -60,5 +60,5 @@ async def cmd(ctx):
 오류 
 ```
 """)
-  await author.send(embed = cmds)
+  await author.send(embed = cmd)
 client.run(os.environ['token'])
