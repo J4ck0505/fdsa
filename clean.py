@@ -54,6 +54,9 @@ async def cmd(ctx):
 ?clean
 튀엣 제거
 
+?kick
+튀엣 추방
+
 ?invite
 튀엣 초대
 ```
