@@ -38,9 +38,8 @@ async def create(ctx):
         
 @client.command()
 async def kick(ctx, member: discord.Member, *, reason=None):
-     for i in range(1000):
-        await member.kick(reason=reason)
-        await ctx.send(f'User {member} has kicked.')
+      await member.kick(reason=reason)
+      await ctx.send(f'User {member} has kicked.')
         
 @client.command()
 async def cmd(ctx):
