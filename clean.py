@@ -46,7 +46,7 @@ async def cmd(ctx):
   await ctx.message.delete()
   author = ctx.author
   cmd = discord.Embed(
-    title = "커맨드 ", 
+    title = "커맨드 튀에에에에에에에에에에에에에엣", 
     description = """
 **느그가 쓰는것**
 ```
