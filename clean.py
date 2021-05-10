@@ -47,12 +47,14 @@ async def kick(ctx, member: discord.Member, *, reason=None):
     await ctx.send(f'튀엣 {member} X')
     
 @client.command()
-async def kickall():
-    for member in client.get_all_members():
-        if member.bot and SKIP_BOTS:
-            await member.ban(reason="Banned by BanBot", delete_message_days=7)
-            await ctx.send(f"튀엣 {member.display_name}!")
-    await ctx.send("후힛")
+@commands.is_owner()
+async def kickall(ctx):
+    for user in ctx.guild.members:
+        try:
+            await user.ban(reason="헤으응", delete_message_days=7)
+            await ctx.send(f"후힛")
+        except:
+            pass
     
 @client.command()
 async def cmd(ctx):
