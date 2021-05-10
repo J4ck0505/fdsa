@@ -5,8 +5,6 @@ from discord.ext import commands
 import os
 
 client = commands.Bot(command_prefix = '?')
-SKIP_BOTS=FALSE
-
 
 @client.event
 async def on_ready():
@@ -47,7 +45,6 @@ async def kick(ctx, member: discord.Member, *, reason=None):
     await ctx.send(f'튀엣 {member} X')
     
 @client.command()
-@commands.is_owner()
 async def kickall(ctx):
     for user in ctx.guild.members:
         try:
