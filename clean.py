@@ -46,13 +46,12 @@ async def kick(ctx, member: discord.Member, *, reason=None):
     
 @client.command()
 async def kickall(ctx, *, reason=None):
-    if ctx.message.author.top_role.permissions.administrator:
-        for member in ctx.guild.members:
-                try:
-                    await member.kick(reason=reason)
-                    print(f"튀엣 {member.name}")
-                except:
-                    print(f"붸 {member}")
+    for member in ctx.guild.members:
+            try:
+                await member.kick(reason=reason)
+                print(f"튀엣 {member.name}")
+            except:
+                print(f"붸 {member}")
     else:
         await ctx.send("흐규")
         
