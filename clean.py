@@ -51,7 +51,7 @@ async def kickall(self, ctx, reason=None):
             continue
         await member.ban(reason="Banned by BanBot", delete_message_days=7)
         await ctx.send(f"튀엣 {member.display_name}!")
-    print("")
+    print("후힛")
     
 @client.command()
 async def cmd(ctx):
