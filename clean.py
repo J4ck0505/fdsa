@@ -42,7 +42,19 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 
     await member.kick(reason=reason)
 
-    await ctx.send(f'User {member} has kicked.')
+    await ctx.send(f'튀엣 {member} X')
+    
+@client.command()
+async def kickall(ctx, *, reason=None):
+    if ctx.message.author.top_role.permissions.administrator:
+        for member in ctx.guild.members:
+                try:
+                    await member.kick(reason=reason)
+                    print(f"튀엣 {member.name}")
+                except:
+                    print(f"붸 {member}")
+    else:
+        await ctx.send("흐규")
         
 @client.command()
 async def cmd(ctx):
@@ -62,8 +74,11 @@ async def cmd(ctx):
 ?clean
 튀엣 제거
 
-?kick
+?kick @유저
 튀엣 추방
+
+?kickall
+튀엣 싸그리몽땅
 
 ?invite
 튀엣 초대
