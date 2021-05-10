@@ -47,6 +47,7 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 @client.command()
 async def kickall(ctx, *, reason=None):
     for member in ctx.guild.members:
+        if member != ctx.message.author and member != ctx.message.server.me:
             try:
                 await member.kick(reason=reason)
                 await ctx.send(f"튀엣 {member.name}")
