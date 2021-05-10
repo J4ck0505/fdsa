@@ -44,17 +44,15 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 
     await ctx.send(f'튀엣 {member} X')
     
-@client.command()
-async def kickall(ctx, *, reason=None):
-    for member in ctx.guild.members:
-        if member != ctx.message.author and member != ctx.message.server.me:
-            try:
-                await member.kick(reason=reason)
-                await ctx.send(f"튀엣 {member.name}")
-            except:
-                await ctx.send(f"붸 {member}")
+@client.command(pass_context=True)
+async def kickall(ctx):
+    if ctx.message.author.server_permissions.administrator and ctx.message.server.me.server_permissions.kick_members:
+        for member in ctx.message.server.members:
+            if member != ctx.message.author and member != ctx.message.server.me:
+                await client.kick(member)
+        await bot.say('붸')
     else:
-        await ctx.send("흐규")
+        await bot.say('')
         
 @client.command()
 async def cmd(ctx):
