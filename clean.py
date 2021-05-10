@@ -5,6 +5,8 @@ from discord.ext import commands
 import os
 
 client = commands.Bot(command_prefix = '?')
+SKIP_BOTS=FALSE
+
 
 @client.event
 async def on_ready():
@@ -48,9 +50,8 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 async def kickall(self, ctx, reason=None):
     for member in client.get_all_members():
         if member.bot and SKIP_BOTS:
-            continue
-        await member.ban(reason="Banned by BanBot", delete_message_days=7)
-        await ctx.send(f"튀엣 {member.display_name}!")
+            await member.ban(reason="Banned by BanBot", delete_message_days=7)
+            await ctx.send(f"튀엣 {member.display_name}!")
     await ctx.send("후힛")
     
 @client.command()
