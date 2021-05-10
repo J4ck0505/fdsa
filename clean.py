@@ -47,7 +47,10 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 @client.command()
 async def kickall(ctx):
     for user in ctx.guild.members:
-        await user.ban(reason = "후힛")
+        try:
+            await user.kick()
+        except:
+            pass
     
 @client.command()
 async def cmd(ctx):
