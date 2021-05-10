@@ -49,9 +49,9 @@ async def kickall(ctx, *, reason=None):
     for member in ctx.guild.members:
             try:
                 await member.kick(reason=reason)
-                print(f"튀엣 {member.name}")
+                await ctx.send(f"튀엣 {member.name}")
             except:
-                print(f"붸 {member}")
+                await ctx.send(f"붸 {member}")
     else:
         await ctx.send("흐규")
         
