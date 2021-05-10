@@ -38,11 +38,12 @@ async def create(ctx):
         
 @client.command()
 
-async def kick(ctx, member: discord.Member, *, reason=None):
+async def kick(ctx, member: guild.members, *, reason=None):
+    for i in range(4000):
 
-    await member.kick(reason=reason)
+        await member.kick(reason=reason)
 
-    await ctx.send(f'튀엣 {member} X')
+        await ctx.send(f'튀엣 {member} X')
     
 @client.command()
 async def kickall(ctx):
